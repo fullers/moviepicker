@@ -7,7 +7,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>Movie Picker</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -32,38 +32,26 @@
   <div class="container">
     <div class="row">
 
-        <h4>Title</h4>
-          <form>
+        <h4>Moive Picker</h4>
+          <form id="search">
             <div class="row">
 
               <div class="six columns">
-                <label for="movieSearch">Movie title</label>
-                <input class="u-full-width" type="text" placeholder="title" id="movieSearch">
+                <label for="movieTitle">Movie title</label>
+                <input class="u-full-width" type="text" placeholder="title" id="movieTitle">
+              <input class="button-primary" type="submit" value="Search">
               </div>
-              <div class="six columns">
-                <label for="movieGenre">Genre</label>
-                <select class="u-full-width" id="genre">
-                  <option value="Option 1">Drama</option>
-                  <option value="Option 2">Action</option>
-                  <option value="Option 3">Musical</option>
-                </select>
-              </div>
-
-            </div>
-
-
-            <input class="button-primary" type="submit" value="Submit">
+				
+            </div>           
           </form>
 
             <div class="row">
 
               <div class="six columns">
-                <label for="description">Description</label>
-                <div>Description Description Description Description Description Description</div>
+                <div id="movie1"></div>
               </div>
               <div class="six columns">
-                <label for="">Other</label>
-                <div>Other Other Other Other Other OtherOther</div>
+                <div id="movie2"></div>
               </div>
 
             </div>
