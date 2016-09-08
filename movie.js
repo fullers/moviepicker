@@ -1,8 +1,10 @@
+//Variable to hold information on the movies
 var movies = {
 	movie1: '',
 	movie2: ''
 }
 
+//When the search form is submitted
 $('#search').on('submit', function(event) {
 	event.preventDefault();
 
@@ -20,22 +22,22 @@ $('#search').on('submit', function(event) {
 	     if (movies.movie1 == '') {
 		     movies.movie1 = response;
 		     console.log('Movie 1 added');
-		     console.log(movies.movie1);
 		    $('#movieTitle').attr('placeholder','Search for second movie');
 	 	}
 	 	else if (movies.movie2 == '') {
 		     movies.movie2 = response;
 		     console.log('Movie 2 added');
-		     console.log(movies.movie2);
 	 	}
 
 	    $.ajax({
-        url: "http://imdb.wemakesites.net/api/" + imdbid,
-        crossDomain: true,
-        dataType: "jsonp",
-        success: function(data) {
-            window.console.log(data);
-        }
+	        url: "http://imdb.wemakesites.net/api/" + imdbid,
+	        crossDomain: true,
+	        dataType: "jsonp",
+	        success: function(data) {
+	            window.console.log(data);
+
+			    $('#movie1').append('Title: ' + movies.movie.Title);
+	        }
 	    });
 	}); 
 
