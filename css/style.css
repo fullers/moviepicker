@@ -10,3 +10,53 @@ body {
 input {
 	display: inline;
 }
+/* CSS for movie picker
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+section {
+	text-align: center;
+	padding: 40px 0;
+}
+
+.header {
+	min-height: 200px;
+}
+ 
+.header-image {
+	position: relative;
+}
+.header-image img {
+	opacity: .45;
+	border: 0 none;
+ 	min-height: 200px;	
+}
+ 
+.header-image h4 {
+	position: absolute;
+	bottom: 20px;	
+	color: #808080;
+	margin-left: 42%;
+}
+
+
+.bg-img {
+	position: relative;
+
+}
+.bg-img img {
+	opacity: .25;
+	border: 0 none;
+ 	min-height: 200px;	
+}
+#movie1, #movie2 {
+	position: absolute;
+	text-align: justify;
+	bottom: 150px;
+	color: #808080;
+	padding-left: 35px;
+}
+.ttl-archive {
+	color: #808080;
+}
+th, td {
+	color: #808080;
+}
