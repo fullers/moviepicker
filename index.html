@@ -6,6 +6,8 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>Movie Picker</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -13,50 +15,102 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="https://use.fontawesome.com/281c3e604c.js"></script>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-    <div class="row">
+  <section class="header u-full-width">    
+    <div class="container centered"> 
 
-        <h4>Movie Picker</h4>
-          <form id="search">
-            <div class="row">
+      <div class="twelve columns header-image">
+          <img src="images/Cinema1.jpg" alt="Cinema"/>
+          <h4>Movie Picker</h4>
+      </div> 
+       
+    </div>
+  </section>
 
-              <div class="twelve columns">
-                <label for="movieTitle">Movie title</label>
-                <input class="u-full-width" type="text" placeholder="Search for first movie" id="movieTitle"> <input class="button-primary" type="submit" value="Search">
+  <section class="mainSearch u-full-width">
+    <div class="container centered">
+      <div class="twelve columns">
+
+            <form id="search">
+              <div class="row">
+
+                <div class="eight columns">
+                  <input class="u-full-width" type="text" placeholder="movie title..." id="movieTitle">
+                </div>
+                <div class="two columns">
+                  <input class="button-primary" type="submit" value="Search">
+                </div>
               <div id="loading">Loading... <i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>
               </div>
-				
-            </div>           
-          </form>
+              </div>           
+            </form>
+      </div>
+    </div>            
+  </section>
 
-            <div class="row">
+  <section class="searchResult u-full-width">
+    <div class="container centered">
+      <div class="row">
 
-              <div class="six columns">
-                <div id="movie1"></div>
-              </div>
-              <div class="six columns">
-                <div id="movie2"></div>
-              </div>
+        <div class="six columns bg-img">
+          <img src="images/film1.jpg" alt="film"/>
+          <div id="movie1">MOVIE 1</div>
+        </div>
 
-            </div>
+        <div class="six columns bg-img">
+          <img src="images/film1.jpg" alt="film"/>
+          <div id="movie2">MOVIE 2</div>
+        </div>
 
+      </div>    
     </div>
-  </div>
+  </section>
+
+  <section class="archive u-full-width">
+    <div class="container centered">
+      <div class="twelve columns ttl-archive">
+          <h4>Search Archive</h4>
+      </div>
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Movie Title</th>
+              <th>Description</th>
+              <th>Rating</th>
+              <th>Recommended</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First Movie</td>
+              <td>Short Description</td>
+              <td>7.5</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Second Movie</td>
+              <td>Short Description</td>
+              <td>7.0</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+   
+    </div>
+  </section>  
+
 <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
-<script src="movie.js"></script>
+<script src="js/movie.js"></script>
 </body>
 </html>
