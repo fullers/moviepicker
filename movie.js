@@ -3,6 +3,10 @@ var movies = {
 	movie1: '',
 	movie2: ''
 }
+var omdbResponse;
+
+function displayMovieInfo(number) {
+};
 
 //When the search form is submitted
 $('#search').on('submit', function(event) {
@@ -12,7 +16,6 @@ $('#search').on('submit', function(event) {
     $('#movieTitle').val('');
 	var queryURL = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&r=json";
 	var imdbid;
-	var omdbResponse;
 
 	//Make Ajax call to OMDB
 	$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
@@ -25,20 +28,34 @@ $('#search').on('submit', function(event) {
         url: "http://imdb.wemakesites.net/api/" + imdbid,
         crossDomain: true,
         dataType: "jsonp",
-        success: function(data) {
-            window.console.log(data);
+        success: function(response) {
+            console.log(response);
 
-		    if (movies.movie1 == '') {
-			     movies.movie1 = omdbResponse;
-			     console.log('Movie 1 added');
-			    $('#movieTitle').attr('placeholder','Search for second movie');
-			    $('#movie1').append('Title: ' + movies.movie1.Title);
-		 	}
-		 	else if (movies.movie2 == '') {
-			     movies.movie2 = omdbResponse;
-			     console.log('Movie 2 added');
-			    $('#movie2').append('Title: ' + movies.movie2.Title);
-		 	}
+            if (response.status == 'success') {
+			    if (movies.movie1 == '') {
+				    movies.movie1 = omdbResponse;
+				    $('#movie1').empty();
+				    $('#movie1').append('<h2>' + movies.movie1.Title + '</h2>');
+				    
+				    poster = $('<img>')
+				    poster.attr('src',omdbResponse.Poster);
+				    poster.attr('class','movie-poster');
+				    poster.attr('id','movie1-poster');
+				    $('#movie1').append(poster);
+			 	}
+			 	else if (movies.movie2 == '') {
+				    movies.movie2 = omdbResponse;
+				    $('#movie2').empty();
+				    $('#movie2').append('<h2>' + movies.movie2.Title + '</h2>');
+				    
+				    poster = $('<img>')
+				    poster.attr('src',omdbResponse.Poster);
+				    poster.attr('class','movie-poster');
+				    poster.attr('id','movie2-poster');
+				    $('#movie2').append(poster);
+			 	}
+			}
+			else console.log('Response failed!');
         }
 	    });
 	}); 

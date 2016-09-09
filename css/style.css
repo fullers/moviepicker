@@ -7,9 +7,31 @@ body {
 	display: none;
 }
 
+div {
+	min-width: 1px;
+	min-height: 1px;
+}
+
 input {
 	display: inline;
 }
+
+img {
+	max-width: 100%;
+}
+
+h2 {
+	text-align: center;
+}
+
+.movie-poster {
+	max-height: 400px;
+}
+
+#movie1 img {
+	text-align: center;
+}
+
 /* CSS for movie picker
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 section {
@@ -37,22 +59,9 @@ section {
 	margin-left: 42%;
 }
 
-
-.bg-img {
-	position: relative;
-
-}
-.bg-img img {
-	opacity: .25;
-	border: 0 none;
- 	min-height: 200px;	
-}
 #movie1, #movie2 {
-	position: absolute;
 	text-align: justify;
-	bottom: 150px;
 	color: #808080;
-	padding-left: 35px;
 }
 .ttl-archive {
 	color: #808080;
