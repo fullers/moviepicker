@@ -64,10 +64,15 @@ section {
 
 #movie2, #movie2 {
 	color: #808080;
+	position: relative;
 }
-.ttl-archive {
-	color: #808080;
-}
+
 th, td {
 	color: #808080;
+}
+#remove-poster, #remove-poster2 {
+	display: none;
+	position: absolute;
+	margin-left: 5px;
+	margin-top: -10px;
 }
