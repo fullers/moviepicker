@@ -32,17 +32,28 @@ $('#search').on('submit', function(event) {
 			console.log('IMDB response added');
 
 			if (response.status == 'success') {
+				var btnClose = $('<i>');
+				btnClose.attr('class', 'fa fa-times');
+				btnClose.attr('area-hidden', 'true');
+				btnClose.attr('id', 'remove-poster');
+
+				var btnClose2 = $('<i>');
+				btnClose2.attr('class', 'fa fa-times');
+				btnClose2.attr('area-hidden', 'true');
+				btnClose2.attr('id', 'remove-poster2');				
+
 				if (movies.movie1 == '') {
 					movies.movie1 = omdbResponse;
-					$('#movie1').empty();
+					$('#movie1').empty();					
 					
 					var poster = $('<img>')
 					poster.attr('src',omdbResponse.Poster);
 					poster.attr('class','movie-poster');
-					poster.attr('id','movie1-poster');
+					poster.attr('id','movie1-poster');					
 					$('#movie1').append(poster);
-
+					$('#movie1').append(btnClose);
 					$('#movie1').append('<h2>' + movies.movie1.Title + '</h2>');
+					$( "#remove-poster" ).show();
 
 					var table = $('<table>');
 					table.attr('class','u-full-width');
@@ -59,14 +70,15 @@ $('#search').on('submit', function(event) {
 				else if (movies.movie2 == '') {
 					movies.movie2 = omdbResponse;
 					$('#movie2').empty();
-					
+
 					var poster = $('<img>')
 					poster.attr('src',omdbResponse.Poster);
 					poster.attr('class','movie-poster');
 					poster.attr('id','movie2-poster');
 					$('#movie2').append(poster);
-
+					$('#movie2').append(btnClose2);
 					$('#movie2').append('<h2>' + movies.movie2.Title + '</h2>');
+					$( "#remove-poster2" ).show();
 
 					var table = $('<table>');
 					table.attr('class','u-full-width');
@@ -101,4 +113,14 @@ $( document ).ajaxStart(function() {
 //Hide 'loading' message when Ajax call is finished running
 $( document ).ajaxStop(function() {
 	$( "#loading" ).hide();
+});
+
+$(document).on('click', '#remove-poster', function() {
+	$('#movie1').empty();
+	movies.movie1 = '';
+});
+
+$(document).on('click', '#remove-poster2', function() {
+	$('#movie2').empty();
+	movies.movie2 = '';
 });
