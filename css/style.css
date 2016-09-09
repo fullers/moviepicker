@@ -25,18 +25,21 @@ h2 {
 }
 
 .movie-poster {
-	max-height: 400px;
+	max-height: 350px;
+	text-align: center;
+	margin-bottom: 15px;
+
 }
 
-#movie1 img {
-	text-align: center;
+td:first-child {
+	font-weight: bold;
 }
 
 /* CSS for movie picker
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 section {
 	text-align: center;
-	padding: 40px 0;
+	padding: 20px 0;
 }
 
 .header {
@@ -59,8 +62,7 @@ section {
 	margin-left: 42%;
 }
 
-#movie1, #movie2 {
-	text-align: justify;
+#movie2, #movie2 {
 	color: #808080;
 }
 .ttl-archive {
