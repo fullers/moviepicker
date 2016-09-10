@@ -39,6 +39,7 @@ $('#search').on('submit', function(event) {
 			dataType: "jsonp",
 			success: function(response) {
 				console.log('IMDB response added');
+				console.log(response.data.review.rating)
 
 				if (response.status == 'success') {	
 
@@ -98,6 +99,10 @@ $('#search').on('submit', function(event) {
 						}
 						if (movies.movie1.Plot !== 'N/A') {
 							$('table#movie1-table').append('<tr><td>Plot</td><td>' + movies.movie1.Plot + '</td></tr>');
+						}
+						if (response.data.review.rating !== 'N/A') {
+							$('table#movie1-table').append('<tr><td>Review</td><td>' + response.data.review.rating + '</td></tr>');
+							$('table#movie1-table').append('<tr><td></td><td>' + response.data.review.text + '</td></tr>');
 						}
 
 						//Fade in movie1 div
@@ -159,6 +164,10 @@ $('#search').on('submit', function(event) {
 						}
 						if (movies.movie2.Plot !== 'N/A') {
 							$('table#movie2-table').append('<tr><td>Plot</td><td>' + movies.movie2.Plot + '</td></tr>');
+						}
+						if (response.data.review.rating !== 'N/A') {
+							$('table#movie2-table').append('<tr><td>Review</td><td>' + response.data.review.rating + '</td></tr>');
+							$('table#movie2-table').append('<tr><td></td><td>' + response.data.review.text + '</td></tr>');
 						}
 
 						//Fade in movie2 div
