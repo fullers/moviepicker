@@ -100,8 +100,14 @@ $('#search').on('submit', function(event) {
 						if (movies.movie1.Plot !== 'N/A') {
 							$('table#movie1-table').append('<tr><td>Plot</td><td>' + movies.movie1.Plot + '</td></tr>');
 						}
-						if (response.data.review.rating !== 'N/A') {
+						if (response.data.review.rating !== null) {
 							$('table#movie1-table').append('<tr><td>Review</td><td>' + response.data.review.rating + '</td></tr>');
+							
+						} else {
+							$('table#movie1-table').append('<tr><td>Review</td><td></td></tr>');
+						}
+						if (response.data.review.text !== null) {
+							
 							$('table#movie1-table').append('<tr><td></td><td>' + response.data.review.text + '</td></tr>');
 						}
 
@@ -165,8 +171,14 @@ $('#search').on('submit', function(event) {
 						if (movies.movie2.Plot !== 'N/A') {
 							$('table#movie2-table').append('<tr><td>Plot</td><td>' + movies.movie2.Plot + '</td></tr>');
 						}
-						if (response.data.review.rating !== 'N/A') {
+						if (response.data.review.rating !== null) {
 							$('table#movie2-table').append('<tr><td>Review</td><td>' + response.data.review.rating + '</td></tr>');
+			
+						} else {
+							$('table#movie2-table').append('<tr><td>Review</td><td></td></tr>');
+						}
+						if (response.data.review.text !== 'null') {
+							
 							$('table#movie2-table').append('<tr><td></td><td>' + response.data.review.text + '</td></tr>');
 						}
 
