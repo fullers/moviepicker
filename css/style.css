@@ -26,17 +26,15 @@ h2 {
 
 .movie-poster {
 	max-height: 350px;
+	min-height: 200px;
 	text-align: center;
 	margin-bottom: 15px;
-
 }
 
 td:first-child {
 	font-weight: bold;
 }
 
-/* CSS for movie picker
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 section {
 	text-align: center;
 	padding: 20px 0;
@@ -70,9 +68,13 @@ section {
 th, td {
 	color: #808080;
 }
+
 #remove-movie1, #remove-movie2 {
-	/*display: none;*/
-	position: absolute;
+	float: right;
 	margin-left: 5px;
 	margin-top: -10px;
+}
+
+.removal-button {
+	cursor: pointer;
 }
