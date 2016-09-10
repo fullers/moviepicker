@@ -70,7 +70,7 @@ section {
 th, td {
 	color: #808080;
 }
-#remove-poster, #remove-poster2 {
+#remove-movie1, #remove-movie2 {
 	display: none;
 	position: absolute;
 	margin-left: 5px;
