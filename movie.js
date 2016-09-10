@@ -6,7 +6,8 @@ var movies = {
 	movie1: '',
 	movie2: ''
 }
-var omdbResponse;
+var score1; //Score variable for movie 1
+var score2; //Score varriable for movie 2
 
 // -----------------------------------------------------------
 // Functions/Actions
@@ -23,6 +24,7 @@ $('#search').on('submit', function(event) {
 		$('#movieTitle').val('');
 		var queryURL = "http://www.omdbapi.com/?t=" + title + "&plot=short&r=json";
 		var imdbid;
+		var omdbResponse;
 
 		//Make Ajax call to OMDB
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
@@ -163,15 +165,38 @@ $('#search').on('submit', function(event) {
 						$('#movie2').fadeIn();
 					}
 
-					//Check to see if there are two movies selected
-					if (movies.movie1 !== '' && movies.movie2 !== '') {
-						console.log('two movies!');
-					}
-
 					//Scroll to search input after movie info is added to page
 					$('body').animate({
 						scrollTop: $("#search").offset().top - 20
 					}, 400);
+
+					//Check to see if there are two movies selected
+					if (movies.movie1 !== '' && movies.movie2 !== '') {
+						console.log('two movies!');
+
+						//Calculate score for movie 1
+						meta1 = movies.movie1.Metascore * .1;
+						rating1 = parseInt(movies.movie1.imdbRating);
+						votes1 = parseInt(movies.movie1.imdbVotes) * .01;
+						runtime1 = movies.movie1.Runtime.replace(' min','') * .1
+
+						score1 = (((meta1 + rating1) * 2) + votes1 + runtime1).toFixed(1);
+						// score1 = score1.toFixed(1)
+						console.log(score1);
+
+						//calculate score for movie 2
+						meta2 = movies.movie2.Metascore * .1;
+						rating2 = parseInt(movies.movie2.imdbRating);
+						votes2 = parseInt(movies.movie2.imdbVotes) * .01;
+						runtime2 = movies.movie2.Runtime.replace(' min','') * .1
+
+						score2 = (((meta2 + rating2) * 2) + votes2 + runtime2).toFixed(1);
+						console.log(score2);
+
+						if (score1 > score2) console.log('Movie 1 won');
+						else if (score2 > score1) console.log('Movie 2 win');
+						else console.log('Tie!');
+					}
 				}
 				else console.log('Response failed!');
 			}
