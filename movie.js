@@ -167,6 +167,11 @@ $('#search').on('submit', function(event) {
 					if (movies.movie1 !== '' && movies.movie2 !== '') {
 						console.log('two movies!');
 					}
+
+					//Scroll to search input after movie info is added to page
+					$('body').animate({
+						scrollTop: $("#search").offset().top - 20
+					}, 400);
 				}
 				else console.log('Response failed!');
 			}
