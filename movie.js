@@ -1,12 +1,16 @@
-//Variable to hold information on the movies
+// -----------------------------------------------------------
+// Global Variables
+// -----------------------------------------------------------
+
 var movies = {
 	movie1: '',
 	movie2: ''
 }
 var omdbResponse;
 
-function displayMovieInfo(number) {
-};
+// -----------------------------------------------------------
+// Functions/Actions
+// -----------------------------------------------------------
 
 //When the search form is submitted
 $('#search').on('submit', function(event) {
@@ -35,12 +39,12 @@ $('#search').on('submit', function(event) {
 				var btnClose = $('<i>');
 				btnClose.attr('class', 'fa fa-times');
 				btnClose.attr('area-hidden', 'true');
-				btnClose.attr('id', 'remove-poster');
+				btnClose.attr('id', 'remove-movie1');
 
 				var btnClose2 = $('<i>');
 				btnClose2.attr('class', 'fa fa-times');
 				btnClose2.attr('area-hidden', 'true');
-				btnClose2.attr('id', 'remove-poster2');				
+				btnClose2.attr('id', 'remove-movie2');				
 
 				if (movies.movie1 == '') {
 					movies.movie1 = omdbResponse;
@@ -53,7 +57,7 @@ $('#search').on('submit', function(event) {
 					$('#movie1').append(poster);
 					$('#movie1').append(btnClose);
 					$('#movie1').append('<h2>' + movies.movie1.Title + '</h2>');
-					$( "#remove-poster" ).show();
+					$( "#remove-movie1" ).show();
 
 					var table = $('<table>');
 					table.attr('class','u-full-width');
@@ -78,7 +82,7 @@ $('#search').on('submit', function(event) {
 					$('#movie2').append(poster);
 					$('#movie2').append(btnClose2);
 					$('#movie2').append('<h2>' + movies.movie2.Title + '</h2>');
-					$( "#remove-poster2" ).show();
+					$( "#remove-movie2" ).show();
 
 					var table = $('<table>');
 					table.attr('class','u-full-width');
@@ -115,12 +119,14 @@ $( document ).ajaxStop(function() {
 	$( "#loading" ).hide();
 });
 
-$(document).on('click', '#remove-poster', function() {
+//On-click function to remove movie 1
+$(document).on('click', '#remove-movie1', function() {
 	$('#movie1').empty();
 	movies.movie1 = '';
 });
 
-$(document).on('click', '#remove-poster2', function() {
+//On-click function to remove movie 2
+$(document).on('click', '#remove-movie2', function() {
 	$('#movie2').empty();
 	movies.movie2 = '';
 });
