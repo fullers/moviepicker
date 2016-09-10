@@ -39,7 +39,8 @@ $('#search').on('submit', function(event) {
 			dataType: "jsonp",
 			success: function(response) {
 				console.log('IMDB response added');
-				console.log(response.data.review.rating)
+				console.log('Review: '+ response.data.review);
+				//console.log('Review Rating: '+response.data.review.rating);
 
 				if (response.status == 'success') {	
 
@@ -93,29 +94,35 @@ $('#search').on('submit', function(event) {
 						}
 						if (movies.movie1.Metascore !== 'N/A') {
 							$('table#movie1-table').append('<tr><td>Metascore</td><td>' + movies.movie1.Metascore + '</td></tr>');
+						} else {
+							$('table#movie1-table').append('<tr><td>Metascore</td><td>' + '0' + '</td></tr>');
 						}
 						if (movies.movie1.imdbRating !== 'N/A') {
 							$('table#movie1-table').append('<tr><td>IMDb Rating</td><td>' + movies.movie1.imdbRating + '</td></tr>');
+						} else {
+							$('table#movie1-table').append('<tr><td>IMDb Rating</td><td>'+'0'+'</td></tr>');
 						}
 						if (movies.movie1.Plot !== 'N/A') {
 							$('table#movie1-table').append('<tr><td>Plot</td><td>' + movies.movie1.Plot + '</td></tr>');
 						}
-						if (response.data.review.rating !== null) {
+						if (response.data.review === null) {
+							return false;
+						}
+						if (response.data.review !== null || response.data.review.rating !== null) {
 							$('table#movie1-table').append('<tr><td>Review</td><td>' + response.data.review.rating + '</td></tr>');
 							
-						} else {
+						} else if(response.data.review === null || response.data.review.rating === null) {
 							$('table#movie1-table').append('<tr><td>Review</td><td></td></tr>');
 						}
 						if (response.data.review.text !== null) {
-							
 							$('table#movie1-table').append('<tr><td></td><td>' + response.data.review.text + '</td></tr>');
 						}
 
 						//Fade in movie1 div
 						$('#movie1').fadeIn();
-					}
-					else if (movies.movie2 == '') {
-						movies.movie2 = omdbResponse;
+						}
+						else if (movies.movie2 == '') {
+							movies.movie2 = omdbResponse;
 
 						//Hide movie2 div
 						$('#movie2').hide();
@@ -164,20 +171,27 @@ $('#search').on('submit', function(event) {
 						}
 						if (movies.movie2.Metascore !== 'N/A') {
 							$('table#movie2-table').append('<tr><td>Metascore</td><td>' + movies.movie2.Metascore + '</td></tr>');
+						} else {
+							$('table#movie2-table').append('<tr><td>Metascore</td><td>' + '0' + '</td></tr>');
 						}
 						if (movies.movie2.imdbRating !== 'N/A') {
 							$('table#movie2-table').append('<tr><td>IMDb Rating</td><td>' + movies.movie2.imdbRating + '</td></tr>');
+						} else {
+							$('table#movie2-table').append('<tr><td>IMDb Rating</td>'+'0'+'<td></td></tr>');
 						}
 						if (movies.movie2.Plot !== 'N/A') {
 							$('table#movie2-table').append('<tr><td>Plot</td><td>' + movies.movie2.Plot + '</td></tr>');
 						}
-						if (response.data.review.rating !== null) {
+						if (response.data.review === null) {
+							return false;
+						}
+						if (response.data.review !== null || response.data.review.rating !== null) {
 							$('table#movie2-table').append('<tr><td>Review</td><td>' + response.data.review.rating + '</td></tr>');
 			
-						} else {
+						} else if(response.data.review === null || response.data.review.rating === null) {
 							$('table#movie2-table').append('<tr><td>Review</td><td></td></tr>');
 						}
-						if (response.data.review.text !== 'null') {
+						if (response.data.review.text !== null) {
 							
 							$('table#movie2-table').append('<tr><td></td><td>' + response.data.review.text + '</td></tr>');
 						}
@@ -259,12 +273,16 @@ $('#search').on('submit', function(event) {
 		   
 					}
 				}
-				else console.log('Response failed!');
+				else {
+					console.log('Response failed!');
+				$('#messageModal').modal('show').append('Response Failed');
+				} 
 			}
 			});
 		}); 
 	}
 });
+
 
 //Show 'loading' message when Ajax call is being run
 $( document ).ajaxStart(function() {

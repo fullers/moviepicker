@@ -34,7 +34,7 @@
           <img src="images/Cinema1.jpg" alt="Cinema"/>
           <h4>Movie Picker</h4>
       </div> 
-       
+       <div>This application will allow you to search for two movie titles and will display info about the movies to help you determine which movie to watch. The application will make a recommendation on the movie with the highest scores.</div>
     </div>
   </section>
 
@@ -49,7 +49,7 @@
                   <input class="u-full-width" type="text" placeholder="Search for movie" id="movieTitle">
                 </div>
                 <div class="two columns">
-                  <input class="button-primary" type="submit" value="Search">
+                  <input id="Search" class="button-primary" type="submit" value="Search">
                 </div>
               <div id="loading"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loading...</div>
               </div>
@@ -58,11 +58,12 @@
       </div>
     </div>            
   </section>
-
+  
   <section class="displayScore u-full-width">
     <div class="container centered">
       <div class="row">
       <div id="scoreResult"></div>
+
       </div>    
     </div>
   </section>
