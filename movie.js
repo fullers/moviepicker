@@ -40,18 +40,18 @@ $('#search').on('submit', function(event) {
 				if (movies.movie1 == '') {
 					movies.movie1 = omdbResponse;
 
-					//Empty movie1 div
-					$('#movie1').empty();
-
 					//Hide movie1 div
 					$('#movie1').hide();
 
+					//Add removal button
 					var btnClose = $('<i>');
-					btnClose.attr('class', 'fa fa-times');
+					btnClose.attr('class', 'fa fa-times removal-button');
 					btnClose.attr('area-hidden', 'true');
 					btnClose.attr('id', 'remove-movie1');
+					btnClose.attr('title', 'Remove movie');
 					$('#movie1').append(btnClose);
-					
+
+					//Add movie poster
 					var poster = $('<img>')
 					poster.attr('src',omdbResponse.Poster);
 					poster.attr('class','movie-poster');
@@ -59,11 +59,13 @@ $('#search').on('submit', function(event) {
 					$('#movie1').append(poster);
 					$('#movie1').append('<h2>' + movies.movie1.Title + '</h2>');
 
+					//Add table for the movie info
 					var table = $('<table>');
 					table.attr('class','u-full-width');
 					table.attr('id','movie1-table');
 					$('#movie1').append(table);
 
+					//Add movie info to table
 					$('table#movie1-table').append('<tr><td>Year</td><td>' + movies.movie1.Year + '</td></tr>');
 					$('table#movie1-table').append('<tr><td>Rating</td><td>' + movies.movie1.Rated + '</td></tr>');
 					$('table#movie1-table').append('<tr><td>Actors</td><td>' + movies.movie1.Actors + '</td></tr>');
@@ -77,16 +79,14 @@ $('#search').on('submit', function(event) {
 				else if (movies.movie2 == '') {
 					movies.movie2 = omdbResponse;
 
-					//Empty movie2 div
-					$('#movie2').empty();
-
 					//Hide movie2 div
 					$('#movie2').hide();
 
 					var btnClose = $('<i>');
-					btnClose.attr('class', 'fa fa-times');
+					btnClose.attr('class', 'fa fa-times removal-button');
 					btnClose.attr('area-hidden', 'true');
 					btnClose.attr('id', 'remove-movie2');
+					btnClose.attr('title', 'Remove movie');
 					$('#movie2').append(btnClose);
 
 					var poster = $('<img>')
