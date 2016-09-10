@@ -184,27 +184,67 @@ $('#search').on('submit', function(event) {
 						console.log('two movies!');
 
 						//Calculate score for movie 1
-						meta1 = movies.movie1.Metascore * .1;
-						rating1 = parseInt(movies.movie1.imdbRating);
-						votes1 = parseInt(movies.movie1.imdbVotes) * .01;
-						runtime1 = movies.movie1.Runtime.replace(' min','') * .1
+						if (movies.movie1.Metascore !== 'N/A')
+							meta1 = movies.movie1.Metascore * .1;
+						else
+							meta1 = 0;
+
+						if (movies.movie1.imdbRating !== 'N/A')
+							rating1 = parseInt(movies.movie1.imdbRating);
+						else
+							rating1 = 0;
+
+						if (movies.movie1.imdbVotes !== 'N/A')
+							votes1 = parseInt(movies.movie1.imdbVotes) * .01;
+						else
+							votes1 = 0;
+						if (movies.movie1.Runtime !== 'N/A')
+							runtime1 = movies.movie1.Runtime.replace(' min','') * .1;
+						else
+							runtime1 = 0;
 
 						score1 = (((meta1 + rating1) * 2) + votes1 + runtime1).toFixed(1);
 						// score1 = score1.toFixed(1)
-						console.log(score1);
+						console.log('Score 1: ' + score1);
 
 						//calculate score for movie 2
-						meta2 = movies.movie2.Metascore * .1;
-						rating2 = parseInt(movies.movie2.imdbRating);
-						votes2 = parseInt(movies.movie2.imdbVotes) * .01;
-						runtime2 = movies.movie2.Runtime.replace(' min','') * .1
+						if (movies.movie2.Metascore !== 'N/A')
+							meta2 = movies.movie2.Metascore * .1;
+						else
+							meta2 = 0;
+
+						if (movies.movie2.imdbRating !== 'N/A')
+							rating2 = parseInt(movies.movie2.imdbRating);
+						else
+							rating2 = 0;
+						
+						if (movies.movie2.imdbVotes !== 'N/A')
+							votes2 = parseInt(movies.movie2.imdbVotes) * .01;
+						else
+							votes2 = 0;
+						if (movies.movie2.Runtime !== 'N/A')
+							runtime2 = movies.movie2.Runtime.replace(' min','') * .1;
+						else
+							runtime2 = 0;
 
 						score2 = (((meta2 + rating2) * 2) + votes2 + runtime2).toFixed(1);
-						console.log(score2);
+						console.log('Score 2: ' + score2);
 
-						if (score1 > score2) console.log('Movie 1 won');
-						else if (score2 > score1) console.log('Movie 2 win');
-						else console.log('Tie!');
+						//display calculated score and algorithm description
+
+						if (score1 > score2) {
+							$('#scoreResult').append('<p>Based on the score ' + score1 + ' we recommend ' + movies.movie1.Title + '</p>');
+
+						}
+						else if (score2 > score1) {
+							console.log('Movie 2 win');
+							$('#scoreResult').append('<p>Based on the score ' + score2 + ' we recommend ' + movies.movie2.Title + '</p>');
+						}
+						else {
+							console.log('Tie!');
+							$('#scoreResult').append('<p>Based on the scores the movies are tied.</p>');
+						}
+		   
 					}
 				}
 				else console.log('Response failed!');
@@ -231,6 +271,7 @@ $(document).on('click', '#remove-movie1', function() {
 		$('#movie1').empty();
 	},450);
 	movies.movie1 = '';
+	$('#scoreResult').empty();
 });
 
 //On-click function to remove movie 2
@@ -240,4 +281,5 @@ $(document).on('click', '#remove-movie2', function() {
 		$('#movie2').empty();
 	},450);
 	movies.movie2 = '';
+	$('#scoreResult').empty();
 });
