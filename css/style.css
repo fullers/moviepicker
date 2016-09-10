@@ -78,3 +78,7 @@ th, td {
 .removal-button {
 	cursor: pointer;
 }
+
+form {
+	margin-bottom: 0;
+}
