@@ -10,7 +10,7 @@ var score1; //Score variable for movie 1
 var score2; //Score varriable for movie 2
 
 // -----------------------------------------------------------
-// Functions/Actions
+// Functions/Actions/Modal
 // -----------------------------------------------------------
    	var modalEl = document.getElementById('modal');
     var modalInst = new Modal(modalEl, {
