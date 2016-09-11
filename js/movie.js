@@ -46,6 +46,10 @@ var score2; //Score varriable for movie 2
 $('#search').on('submit', function(event) {
 	event.preventDefault();
 
+	if ($('#movieTitle').val() == ''){
+		modalInst.openModal();
+	}
+
 	//If search field isn't empty
 	if ($('#movieTitle').val() !== '') {
 
@@ -135,7 +139,6 @@ $('#search').on('submit', function(event) {
 							$('table#movie1-table').append('<tr><td>Plot</td><td>' + movies.movie1.Plot + '</td></tr>');
 						}
 						if (response.data.review === null) {
-							modalInst.openModal();
 							return false;
 						}
 						if (response.data.review !== null || response.data.review.rating !== null) {
