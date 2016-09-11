@@ -27,8 +27,7 @@ var score2; //Score varriable for movie 2
     // class for overlay of modal
     overlayClass: 'modal__overlay', 
       openCallback: function() {
-
-      	$('.modal_content').append("Could not find the result.");
+	   	$('.modal_content').append("Could not find the result.");
         console.log('Callback for when Modal is open.');
       },
       closeCallback: function() {
@@ -36,6 +35,12 @@ var score2; //Score varriable for movie 2
       }
     });
     modalInst.init();
+
+ 	// // open the modal
+	// modalInst.openModal();
+
+	// // close the modal
+	// modalInst.closeModal();
 
 //When the search form is submitted
 $('#search').on('submit', function(event) {
@@ -130,6 +135,7 @@ $('#search').on('submit', function(event) {
 							$('table#movie1-table').append('<tr><td>Plot</td><td>' + movies.movie1.Plot + '</td></tr>');
 						}
 						if (response.data.review === null) {
+							modalInst.openModal();
 							return false;
 						}
 						if (response.data.review !== null || response.data.review.rating !== null) {
