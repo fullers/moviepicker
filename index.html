@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modal.css">
 
 </head>
 <body>
@@ -38,6 +39,7 @@
     </div>
   </section>
 
+  <!-- Main Search Form -->
   <section class="mainSearch u-full-width">
     <div class="container centered">
       <div class="twelve columns">
@@ -53,21 +55,22 @@
                 </div>
               <div id="loading"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loading...</div>
               </div>
-              </div>    
+              </div> 
+              <button class="btn" type="button" data-trigger-modal="modal">Trigger modal</button>   
             </form>
       </div>
     </div>            
   </section>
-  
+
+ <!--  Area to display move scores and recommendations -->
   <section class="displayScore u-full-width">
     <div class="container centered">
       <div class="row">
       <div id="scoreResult"></div>
-
       </div>    
     </div>
   </section>
-
+  <!-- Search Result -->
   <section class="searchResult u-full-width">
     <div class="container centered">
       <div class="row">
@@ -83,7 +86,27 @@
       </div>    
     </div>
   </section>
-
-  <script src="movie.js"></script>
+  
+  <!-- Modal -->
+  <div class="modal modal--scale-up" id="modal">
+  <div class="modal__window">
+    <button class="modal__close-btn" type="button" data-close-modal>
+      <svg class="modal__close-icon">
+        <use xlink:href="#icon-close"></use>
+      </svg>
+    </button>
+    <div class="modal__header">
+        <h2 class="modal__title">Modal Title</h2>
+    </div>
+    <div class="modal__content">
+        <p>Modal Content</p>
+        <button class="btn" type="button" data-close-modal>Close Modal</button>
+      </div>
+  </div>
+</div> <!-- End Modal -->
+<script src="js/modal.js"></script>
+<script src="js/movie.js"></script>
+  
+  
 </body>
 </html>
