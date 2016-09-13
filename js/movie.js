@@ -215,68 +215,65 @@ function movieSearch() {
 									//Check to see if there are two movies selected
 									if (movies.movie1 !== '' && movies.movie2 !== '') {
 
-										//Calculate score for movie 1
-										if (movies.movie1.Metascore !== 'N/A')
+																				//Calculate scores for both movies
+										if (movies.movie1.Metascore !== 'N/A' && movies.movie2.Metascore !== 'N/A' ) {
 											meta1 = movies.movie1.Metascore * .1;
-										else
+											meta2 = movies.movie2.Metascore * .1;
+										}
+										else {
 											meta1 = 0;
+											meta2 = 0;
+										}
 
-										if (movies.movie1.imdbRating !== 'N/A')
+										if (movies.movie1.imdbRating !== 'N/A' && movies.movie2.imdbRating !== 'N/A') {
 											rating1 = parseInt(movies.movie1.imdbRating);
-										else
+											rating2 = parseInt(movies.movie2.imdbRating);
+										}
+										else {
 											rating1 = 0;
+											rating2 =0;
+										}
 
-										if (movies.movie1.imdbVotes !== 'N/A')
+										if (movies.movie1.imdbVotes !== 'N/A' && movies.movie1.imdbVotes !== 'N/A') {
 											votes1 = parseInt(movies.movie1.imdbVotes) * .01;
-										else
+											votes2 = parseInt(movies.movie2.imdbVotes) * .01;
+										}
+										else {
 											votes1 = 0;
-										if (movies.movie1.Runtime !== 'N/A')
+											votes2 = 0;
+										}
+
+										if (movies.movie1.Runtime !== 'N/A' && movies.movie2.Runtime !== 'N/A') {
 											runtime1 = movies.movie1.Runtime.replace(' min','') * .1;
-										else
+											runtime2 = movies.movie2.Runtime.replace(' min','') * .1;
+										}
+										else {
 											runtime1 = 0;
+											runtime2 = 0;
+										}
 
 										score1 = (((meta1 + rating1) * 2) + votes1 + runtime1).toFixed(1);
-										// score1 = score1.toFixed(1)
 										console.log('Score 1: ' + score1);
-
-										//calculate score for movie 2
-										if (movies.movie2.Metascore !== 'N/A')
-											meta2 = movies.movie2.Metascore * .1;
-										else
-											meta2 = 0;
-
-										if (movies.movie2.imdbRating !== 'N/A')
-											rating2 = parseInt(movies.movie2.imdbRating);
-										else
-											rating2 = 0;
 										
-										if (movies.movie2.imdbVotes !== 'N/A')
-											votes2 = parseInt(movies.movie2.imdbVotes) * .01;
-										else
-											votes2 = 0;
-										if (movies.movie2.Runtime !== 'N/A')
-											runtime2 = movies.movie2.Runtime.replace(' min','') * .1;
-										else
-											runtime2 = 0;
-
 										score2 = (((meta2 + rating2) * 2) + votes2 + runtime2).toFixed(1);
 										console.log('Score 2: ' + score2);
 
 										//display calculated score and algorithm description
 
 										if (score1 > score2) {
-											$('#scoreResult').append('<p>Based on the score ' + score1 + ' we recommend ' + movies.movie1.Title + '</p>');
+											console.log('Movie 1 wins');
+											$('#scoreResult').append('<p>Based on the score ' + score1 + ', we recommend <strong>' + movies.movie1.Title + '</strong>.</p>');
 											$('#movie1').attr('class','winner');
 
 										}
 										else if (score2 > score1) {
-											console.log('Movie 2 win');
-											$('#scoreResult').append('<p>Based on the score ' + score2 + ' we recommend ' + movies.movie2.Title + '</p>');
+											console.log('Movie 2 wins');
+											$('#scoreResult').append('<p>Based on the score ' + score2 + ', we recommend <strong>' + movies.movie2.Title + '</strong>.</p>');
 											$('#movie2').attr('class','winner');
 										}
 										else {
 											console.log('Tie!');
-											$('#scoreResult').append('<p>Based on the scores the movies are tied.</p>');
+											$('#scoreResult').append('<p>Based on the scores, the movies are tied. Watch whichever one you want!</p>');
 										}
 									}
 								}

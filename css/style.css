@@ -39,6 +39,14 @@ td:first-child {
 	font-weight: bold;
 }
 
+th, td {
+	border-bottom: 1px solid #bfbcbc;
+}
+
+tr:last-child td {
+	border-bottom: 0;
+}
+
 section {
 	text-align: center;
 	padding-top: 20px;
@@ -151,3 +159,7 @@ form {
 	float: right;
 }
 /* End Modal CSS */
+
+#scoreResult {
+	font-size: 24px;
+}
