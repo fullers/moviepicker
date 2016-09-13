@@ -2,6 +2,8 @@
 // Global Variables
 // -----------------------------------------------------------
 
+//Changes?
+
 var movies = {
 	movie1: '',
 	movie2: ''
