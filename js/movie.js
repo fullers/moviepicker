@@ -12,43 +12,10 @@ var score2; //Score varriable for movie 2
 // -----------------------------------------------------------
 // Functions/Actions/Modal
 // -----------------------------------------------------------
-   	var modalEl = document.getElementById('modal');
-    var modalInst = new Modal(modalEl, {
-
-    // active class set to modal when it opens
-    activeClass: 'modal--active', 
-
-    // active class set to body when modal opens
-    bodyClass: 'modal-is-active', 
-
-    // adds overlay to modal
-    overlay: true, 
-
-    // class for overlay of modal
-    overlayClass: 'modal__overlay', 
-      openCallback: function() {
-	   	$('.modal_content').append("Could not find the result.");
-        console.log('Callback for when Modal is open.');
-      },
-      closeCallback: function() {
-        console.log('Callback for when Modal is closed.');
-      }
-    });
-    modalInst.init();
-
- 	// // open the modal
-	// modalInst.openModal();
-
-	// // close the modal
-	// modalInst.closeModal();
 
 //When the search form is submitted
 $('#search').on('submit', function(event) {
 	event.preventDefault();
-
-	if ($('#movieTitle').val() == ''){
-		modalInst.openModal();
-	}
 
 	//If search field isn't empty
 	if ($('#movieTitle').val() !== '') {
@@ -315,7 +282,6 @@ $('#search').on('submit', function(event) {
 		}); 
 	}
 });
-
 
 //Show 'loading' message when Ajax call is being run
 $( document ).ajaxStart(function() {
