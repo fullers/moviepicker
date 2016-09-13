@@ -144,9 +144,11 @@ function movieSearch() {
 										//Add omdbResponse to movies object
 										movies.movie2 = omdbResponse;
 
-										//Add review to movies object
-										movies.movie2.review = response.data.review.text;
-										movies.movie2.reviewRating = response.data.review.rating;
+										//Add review to movies object if there is a review
+										if (response.data.review !== null) {
+											movies.movie2.review = response.data.review.text;
+											movies.movie2.reviewRating = response.data.review.rating;
+										}
 
 										//Add removal button
 										var btnClose = $('<i>');
