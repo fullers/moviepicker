@@ -10,7 +10,7 @@ var score1; //Score variable for movie 1
 var score2; //Score varriable for movie 2
 
 // -----------------------------------------------------------
-// Functions/Actions
+// Functions/Actions/Modal
 // -----------------------------------------------------------
 
 //When the search form is submitted
@@ -282,7 +282,6 @@ $('#search').on('submit', function(event) {
 		}); 
 	}
 });
-
 
 //Show 'loading' message when Ajax call is being run
 $( document ).ajaxStart(function() {
