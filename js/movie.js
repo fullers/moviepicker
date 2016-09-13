@@ -266,11 +266,13 @@ function movieSearch() {
 
 										if (score1 > score2) {
 											$('#scoreResult').append('<p>Based on the score ' + score1 + ' we recommend ' + movies.movie1.Title + '</p>');
+											$('#movie1').attr('class','winner');
 
 										}
 										else if (score2 > score1) {
 											console.log('Movie 2 win');
 											$('#scoreResult').append('<p>Based on the score ' + score2 + ' we recommend ' + movies.movie2.Title + '</p>');
+											$('#movie2').attr('class','winner');
 										}
 										else {
 											console.log('Tie!');
@@ -342,6 +344,9 @@ $(document).on('click', '#remove-movie1', function() {
 	},450);
 	movies.movie1 = '';
 	$('#scoreResult').empty();
+
+	$('#movie1').removeClass('winner');
+	$('#movie2').removeClass('winner');
 });
 
 //On-click function to remove movie 2
@@ -352,6 +357,9 @@ $(document).on('click', '#remove-movie2', function() {
 	},450);
 	movies.movie2 = '';
 	$('#scoreResult').empty();
+	
+	$('#movie1').removeClass('winner');
+	$('#movie2').removeClass('winner');
 });
 
 //Close modal when the 'close' button is clicked
