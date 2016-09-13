@@ -334,6 +334,7 @@ $( document ).ajaxStart(function() {
 
 //Hide 'loading' message when Ajax call is finished running
 $( document ).ajaxStop(function() {
+	//If message is not a failed response ('movie not found'), immediately close the modal message
 	if (failedResponse == false) {
 		$('#modal-bg').fadeOut();
 	}
