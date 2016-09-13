@@ -77,8 +77,6 @@ th, td {
 #remove-movie1, #remove-movie2 {
 	display: block;
 	text-align: right;
-	margin-left: 5px;
-	margin-top: -10px;
 }
 
 .removal-button {
@@ -87,6 +85,7 @@ th, td {
 
 #movie1, #movie2 {
 	display: none;
+    padding: 10px;
 }
 
 form {
@@ -95,6 +94,15 @@ form {
 
 .fa-spinner {
 	padding: 0 5px;
+}
+
+.winner {
+    background: #d0edf7;
+    border-radius: 10px;
+    border: 2px solid #33c3f0;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5);
 }
 
 /* Modal CSS */
