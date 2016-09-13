@@ -8,7 +8,7 @@ var movies = {
 }
 var score1; //Score variable for movie 1
 var score2; //Score varriable for movie 2
-var failedResponse; //Variable to use if modal is a failed response (so it won't disappear after AJAX is done loading)
+var failedResponse = false; //Variable to use if modal is a failed response (so it won't disappear after AJAX is done loading)
 
 // -----------------------------------------------------------
 // Functions/Actions/Modal
@@ -51,9 +51,12 @@ function movieSearch() {
 					omdbResponse = response;
 					console.log('OMDB response added');
 
+					failedResponse = false;
+
 					//If omdb searches and finds something other than a movie
 					if (omdbResponse.Type !== 'movie') {
 						console.log('Error! Search item is not a movie!');
+						failedResponse = true;
 						$('#modal-bg').fadeIn();
 						$('#modal-message').html('That\'s not a movie! Try searching again.');
 					}
@@ -66,8 +69,6 @@ function movieSearch() {
 							dataType: "jsonp",
 							success: function(response) {
 								console.log('IMDB response added');
-
-								failedResponse = false;
 
 								if (response.status == 'success') {
 
@@ -280,7 +281,6 @@ function movieSearch() {
 								else {
 									console.log('Response failed!');
 
-									//Variable to use if modal is a failed response (so it won't disappear after AJAX is done loading)
 									failedResponse = true;
 									$('#modal-bg').fadeIn();
 									$('#modal-message').html('No movie found! Try again.');

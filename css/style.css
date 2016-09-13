@@ -75,7 +75,8 @@ th, td {
 }
 
 #remove-movie1, #remove-movie2 {
-	float: right;
+	display: block;
+	text-align: right;
 	margin-left: 5px;
 	margin-top: -10px;
 }
@@ -97,11 +98,15 @@ form {
 }
 
 /* Modal CSS */
+#modal-bg {
+	display: none;
+}
+
 #modal-overlay { 
 	height: 100%;
 	width: 100%;
 	position: fixed;
-	z-index: 1;
+	z-index: 3;
 	left: 0;
 	top: 0;
 	background-color: rgba(0,0,0, 0.2);
@@ -110,10 +115,6 @@ form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-#modal-bg {
-	display: none;
 }
 
 #modal {
@@ -141,3 +142,4 @@ form {
 #remove-modal {
 	float: right;
 }
+/* End Modal CSS */
