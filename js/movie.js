@@ -58,7 +58,7 @@ window.onload = function() {
 					dataType: "jsonp",
 					success: function(response) {
 						console.log('IMDB response added');
-						console.log('Review: '+ response.data.review);
+						// console.log('Review: '+ response.data.review);
 						//console.log('Review Rating: '+response.data.review.rating);
 
 						if (response.status == 'success') {	
@@ -291,10 +291,17 @@ window.onload = function() {
 								}
 				   
 							}
+
+						//Variable to use if modal is a failed response (so it won't disappear after AJAX is done loading)
+						failedResponse = false;
 						}
 						else {
 							console.log('Response failed!');
-						$('#messageModal').modal('show').append('Response Failed');
+
+							//Variable to use if modal is a failed response (so it won't disappear after AJAX is done loading)
+							failedResponse = true;
+							$('#modal-bg').fadeIn();
+							$('#modal-message').html('No movie found! Try again.');
 						} 
 					}
 					});
@@ -319,13 +326,15 @@ $( document ).ajaxStart(function() {
 
 //Hide 'loading' message when Ajax call is finished running
 $( document ).ajaxStop(function() {
-	$('#modal-bg').fadeOut();
+	if (failedResponse == false) {
+		$('#modal-bg').fadeOut();
+	}
 
-	//Display the close modal button once 'Loading' messages are finished
-	$('#modal-close').show();
+		//Display the close modal button once 'Loading' messages are finished
+		$('#modal-close').show();
 
-	//Variable to use if modal is loading screen and shouldn't be closed when background is clicked
-	loadingScreen = false;
+		//Variable to use if modal is loading screen and shouldn't be closed when background is clicked
+		loadingScreen = false;
 });
 
 //On-click function to remove movie 1
@@ -355,6 +364,7 @@ $(document).on('click', '#remove-modal', function() {
 
 //Close modal when the background (area outside the modal) is clicked
 $(document).on('click', '#modal-overlay', function() {
+	//If modal isn't a loading screen
 	if (loadingScreen == false) {
 		$('#modal-bg').fadeOut();
 	}
