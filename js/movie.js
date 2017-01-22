@@ -66,6 +66,9 @@ function movieSearch() {
 						$.ajax({
 							url: "http://imdb.wemakesites.net/api/" + imdbid,
 							crossDomain: true,
+							data: {
+								api_key: '315a5eea-6ee0-4752-b6b7-b45c18863ee3'
+							},
 							dataType: "jsonp",
 							success: function(response) {
 								console.log('IMDB response added');
