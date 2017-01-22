@@ -27,6 +27,7 @@ Search for two movie titles, based on the searches it will return info about the
 
 The movie.js file includes all the Javascript, Jquery, and ajax calls (in a function called moviesearch). 
 ,,,
+
 function movieSearch() {
 	//If two movies have not already been chosen
 	if (movies.movie1 == '' || movies.movie2 == '') {
