@@ -41,7 +41,7 @@ function movieSearch() {
 			//Otherwise, run the AJAX calls
 			else {
 
-			var queryURL = "http://www.omdbapi.com/?t=" + title + "&plot=short&r=json";
+			var queryURL = "https://www.omdbapi.com/?t=" + title + "&plot=short&r=json";
 			var imdbid;
 			var omdbResponse;
 
